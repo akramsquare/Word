@@ -1,0 +1,24 @@
+version: 0.2
+
+env:
+    parameter-store:
+            DB_Name: "/akram/db_name"
+            DB_User: "/akram/db_user"
+            DB_Password: "/akram/db_pass"
+            DB_Host: "/akram/db_host"
+
+
+   
+
+               
+phases:
+    build:
+        commands:
+            - sed -i 's/database_name_here/'$DB_Name'/' wp-config.php
+            - sed -i 's/username_here/'$DB_User'/' wp-config.php
+            - sed -i 's/password_here/'$DB_Password'/' wp-config.php
+            - sed -i 's/localhost/'$DB_Host'/' wp-config.php
+            
+artifacts:
+   files:
+            - '**/*'
